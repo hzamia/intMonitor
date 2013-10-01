@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+
+           
+
+<h:head>
+
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<title>INTT Monitor</title>
+		</f:facet>
+
+	 <f:facet name="last">
+<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/style.css" />
+         </f:facet>
+
+</h:head>
+<body>
+
+	<f:view>
+		<header> </header>
+
+		<div id="wrapper">
+	
+		<div  style="float: right; width: 80%">  
+			
+			<h:form>
+			    <p:growl id="growl"  showDetail="true" sticky="true" severity="error" />  
+			<p:panelGrid columns="2" >
+			
+				<p:outputLabel  value="Identifiant : " ></p:outputLabel>
+				<p:inputText id="username" value="#{loginCtrl.users.login}"
+					required="true"  requiredMessage="Votre Login est obligatoire" />
+				<p:outputLabel value="Password : "></p:outputLabel>
+				<p:password id="password" value="#{loginCtrl.users.password}"
+					required="true" requiredMessage="Votre mot de passe obligatoire" />
+			
+				<p:commandButton value="Connexion" action="#{loginCtrl.doLogin()}"  update="growl">
+				</p:commandButton>
+
+		</p:panelGrid>
+			</h:form>
+		
+</div>
+
+	
+	
+	</div>
+	</f:view>
+
+</body>
+</html>

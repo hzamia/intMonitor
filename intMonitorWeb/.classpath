@@ -13,5 +13,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="primefaces-3.5.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/intMonitorEJB"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
