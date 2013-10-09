@@ -3,6 +3,8 @@
 	<persistence-unit name="intMonitorEJB">
 	<jta-data-source>java:/intt</jta-data-source>
 	<class>tn.intt.intMonitor.entities.Users</class>
+		<class>tn.intt.intMonitor.entities.Logs</class>
+	
 	<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />

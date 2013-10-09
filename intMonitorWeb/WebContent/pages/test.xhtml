@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+           
+        </h:head>
+
+        <h:body>
+<p:layout fullPage="true">  
+  
+    <p:layoutUnit position="north" size="100"  resizable="true" >  
+        <h:outputText value="North unit content." />  
+    </p:layoutUnit>  
+  
+    <p:layoutUnit position="south" size="100" resizable="true" >  
+        <h:outputText value="South unit content." />  
+    </p:layoutUnit>  
+  
+    <p:layoutUnit position="west" size="200"  resizable="true" >  
+        <h:outputText value="West unit content." />  
+    </p:layoutUnit>  
+  
+    <p:layoutUnit position="center">  
+        <p:tabView> activeIndex="2">  
+	<p:tab title="AddUser">  
+          <h:form id="adduser"  >
+			<p:panelGrid columns="2" cellpadding="10">
+				<h:outputText value="nom d'utilisateur(login)"></h:outputText>
+				<p:inputText value="#{usersCtrl.user.login}" id="login" />
+				<h:outputText value="mot de passe "></h:outputText> 
+            	<p:password id="feedback" value="#{usersCtrl.user.password}" feedback="true"/>  
+				
+				<h:outputText value="Role de l'utilisateur" />
+				<p:selectOneMenu value="#{usersCtrl.user.role}" >
+				<f:selectItem itemValue="Admin" itemLabel="Admin"/>
+				<f:selectItem itemValue="user" itemLabel="User"/>
+				</p:selectOneMenu> 
+				<h:outputText value="E-mail" />
+				<p:inputText value="#{usersCtrl.user.email}" />
+					
+			</p:panelGrid>
+			
+			<h:commandButton value="Add User"  action="#{usersCtrl.doAddUser}" image="/css/add.png" update="AddUser" />
+			<h:commandButton value="Reset" image="/css/undo.png" type="reset" />
+			
+		</h:form>
+        </p:tab>     
+        <p:tab title="List Users">  
+        <h:form >  
+  
+  
+  
+    <p:dataTable id="dataTable" var="user" value="#{usersCtrl.modelUsers}">  
+        <f:facet name="header">  
+			Users List 
+        </f:facet>  
+  
+        <p:column sortBy="login" headerText="Login">  
+            <h:outputText value="#{user.login}" />  
+        </p:column>  
+  
+        <p:column sortBy="password" headerText="Password">  
+            <h:outputText value="#{user.password}" />  
+        </p:column>  
+  
+        <p:column sortBy="email" headerText="E-Mail">  
+            <h:outputText  value="#{user.email}" />  
+        </p:column>  
+  
+        <p:column sortBy="role" headerText="Role">  
+            <h:outputText value="#{user.role}" />  
+        </p:column>  
+          <p:column sortBy="ActionDelete" headerText="Action Delete" >
+			<p:commandButton   action="#{usersCtrl.doDeleteUser()}" update="dataTable" icon="/css/delete.png"></p:commandButton>
+        </p:column> 
+    </p:dataTable>  
+  
+</h:form>  
+        </p:tab>  
+   
+</p:tabView>   
+    </p:layoutUnit>  
+  
+</p:layout>  
+        </h:body>
+
+    </f:view>
+
+</html>

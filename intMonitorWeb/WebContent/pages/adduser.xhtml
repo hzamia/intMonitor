@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+      
+
+	<h:head></h:head> 
+<body> 
+<f:view>
+<h:form id="adduser"  >
+			<p:panelGrid columns="2" border-color="blue" >
+				<h:outputText value="nom d'utilisateur(login)"></h:outputText>
+				<p:inputText value="#{usersCtrl.user.login}" id="login" />
+				<h:outputText value="mot de passe "></h:outputText> 
+            	<p:password id="feedback" value="#{usersCtrl.user.password}" feedback="true"/>  
+				
+				<h:outputText value="Role de l'utilisateur" />
+				<p:selectOneMenu value="#{usersCtrl.user.role}" >
+				<f:selectItem itemValue="Admin" itemLabel="Admin"/>
+				<f:selectItem itemValue="user" itemLabel="User"/>
+				</p:selectOneMenu> 
+				<h:outputText value="E-mail" />
+				<p:inputText value="#{usersCtrl.user.email}" />
+					
+			</p:panelGrid>
+			
+			<h:commandButton value="Add User"  action="#{usersCtrl.doAddUser}" image="/css/add.png" update=":adduser" />
+			<h:commandButton value="Reset" image="/css/undo.png" type="reset" />
+			
+		</h:form>
+</f:view>
+</body> 
+
+</html>

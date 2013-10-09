@@ -2,6 +2,7 @@ package tn.intt.intMonitor.entities;
 
 import java.io.Serializable;
 import java.lang.String;
+
 import javax.persistence.*;
 
 /**
@@ -13,7 +14,6 @@ import javax.persistence.*;
 
 public class Users implements Serializable {
 
-	
 	private String login;
 	private String password;
 	private String email;
@@ -23,7 +23,7 @@ public class Users implements Serializable {
 	public Users() {
 		super();
 	}   
-	@Id    
+	@Id
 	public String getLogin() {
 		return this.login;
 	}
@@ -52,5 +52,6 @@ public class Users implements Serializable {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
    
 }

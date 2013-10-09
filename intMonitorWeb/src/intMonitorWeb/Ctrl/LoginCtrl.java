@@ -38,9 +38,10 @@ public class LoginCtrl {
 					e1.printStackTrace();
 				}
 			}
-			if (role.equals("t")) {
+			if (role.equals("user")) {
 				try {
-					FacesContext.getCurrentInstance().getExternalContext().redirect("charguia.jsf");
+					FacesContext.getCurrentInstance().getExternalContext().redirect("user.jsf");
+					return "user";
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -52,6 +53,11 @@ public class LoginCtrl {
 		return "admin";
 	}
 
-		
+		public void doLogout()
+		{
+			FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+			
+		}
 	}
+
 

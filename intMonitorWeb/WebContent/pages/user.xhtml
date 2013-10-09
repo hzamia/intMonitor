@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body> 
+<h:body>
+<h:form id="userform">  
+  
+  
+  
+    <p:dataTable id="dataTable" var="user" value="#{usersCtrl.modelUsers}">  
+        <f:facet name="header">  
+			Users List 
+        </f:facet>  
+  
+        <p:column sortBy="login" headerText="Login">  
+            <h:outputText value="#{user.login}" />  
+        </p:column>  
+  
+        <p:column sortBy="password" headerText="Password">  
+            <h:outputText value="#{user.password}" />  
+        </p:column>  
+  
+        <p:column sortBy="email" headerText="E-Mail">  
+            <h:outputText  value="#{user.email}" />  
+        </p:column>  
+  
+        <p:column sortBy="role" headerText="Role">  
+            <h:outputText value="#{user.role}" />  
+        </p:column>  
+          <p:column sortBy="test" headerText="test" >
+          	<p:commandLink value="Delete" action="#{usersCtrl.doDeleteUser()}"  update=":userform"></p:commandLink>  
+            <h:outputText />  
+        </p:column> 
+    </p:dataTable>  
+  
+</h:form>  
+               
+
+</h:body>
+</body> 
+</html>

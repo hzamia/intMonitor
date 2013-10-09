@@ -10,4 +10,9 @@
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.jsf</url-pattern>
   </servlet-mapping>
+  <error-page>
+<exception-type>javax.faces.application.ViewExpiredException</exception-type>
+<location>/pages/login.xhtml</location>
+</error-page>
+   
 </web-app>

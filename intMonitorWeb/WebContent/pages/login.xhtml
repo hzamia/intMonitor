@@ -5,9 +5,6 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	
-
-           
-
 <h:head>
 
 	<f:facet name="first">
@@ -16,7 +13,7 @@
 		<title>INTT Monitor</title>
 		</f:facet>
 
-	 <f:facet name="last">
+<f:facet name="last">
 <link type="text/css" rel="stylesheet"
 		href="#{request.contextPath}/css/style.css" />
          </f:facet>
@@ -25,12 +22,14 @@
 <body>
 
 	<f:view>
-		<header> </header>
+		<header>
+		<IMG alt="" src="#{request.contextPath}/css/intt.png" />
+		<h1 align="right"><p>Systeme de surveillance de l'INT</p></h1> </header>
+			<br /><br />
 
 		<div id="wrapper">
 	
 		<div  style="float: right; width: 80%">  
-			
 			<h:form>
 			    <p:growl id="growl"  showDetail="true" sticky="true" severity="error" />  
 			<p:panelGrid columns="2" >
@@ -46,13 +45,9 @@
 				</p:commandButton>
 
 		</p:panelGrid>
-			</h:form>
-		
+			</h:form>	
 </div>
-
-	
-	
-	</div>
+</div>
 	</f:view>
 
 </body>
