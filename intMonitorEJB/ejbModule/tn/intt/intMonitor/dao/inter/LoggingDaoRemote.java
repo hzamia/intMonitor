@@ -10,5 +10,6 @@ import tn.intt.intMonitor.entities.Logging;
 public interface LoggingDaoRemote {
 
 	public Logging findLogs(int seq);
-	public List<Logging> getAllLogs();	
+	public List<Logging> getAllLogs();
+
 }

@@ -11,81 +11,45 @@
 <f:view>
 <h:form>
 <p:dataTable id="tbl" var="logs" value="#{logsCtrl.modelLogs}" paginator="true" rows="10">  
+    	<p:column>  
+        <f:facet name="header">  
+            <h:outputText value="Host" />  
+        </f:facet>  
+        <h:outputText value="#{logs.host}" />  
+    	</p:column>  
+  		<p:column >
+        </p:column> 
     <p:column>  
         <f:facet name="header">  
-            <h:outputText value="Model" />  
+            <h:outputText value="facility" />  
         </f:facet>  
-        <h:outputText value="#{car.model}" />  
+        <h:outputText value="#{logs.facility}"/>  
     </p:column>  
   
     <p:column>  
         <f:facet name="header">  
-            <h:outputText value="Year" />  
+            <h:outputText value="Priority" />  
         </f:facet>  
-        <h:outputText value="#{car.year}"/>  
+        <h:outputText value="#{logs.priority}" />  
     </p:column>  
   
     <p:column>  
         <f:facet name="header">  
-            <h:outputText value="Manufacturer" />  
+            <h:outputText value="Date and Time" />  
         </f:facet>  
-        <h:outputText value="#{car.manufacturer}" />  
+        <h:outputText value="#{logs.datetime}" />  
     </p:column>  
-  
-    <p:column>  
+    
+    <p:column >
         <f:facet name="header">  
-            <h:outputText value="Color" />  
+            <h:outputText value="ProGram" />  
         </f:facet>  
-        <h:outputText value="#{car.color}" />  
-    </p:column>  
+        <h:outputText value="#{logs.program}" />  
+    </p:column> 
+    
+    
+    
 </p:dataTable>  
-      
-<h:panelGrid columns="2">  
-    <p:panel header="Export All Data">  
-        <h:commandLink>  
-            <p:graphicImage value="/images/excel.png" />  
-            <p:dataExporter type="xls" target="tbl" fileName="cars" />  
-        </h:commandLink>  
-  
-        <h:commandLink>  
-            <p:graphicImage value="/images/pdf.png" />  
-            <p:dataExporter type="pdf" target="tbl" fileName="cars"/>  
-        </h:commandLink>  
-          
-        <h:commandLink>  
-            <p:graphicImage value="/images/csv.png" />  
-            <p:dataExporter type="csv" target="tbl" fileName="cars" />  
-        </h:commandLink>  
-          
-        <h:commandLink>  
-            <p:graphicImage value="/images/xml.png" />  
-            <p:dataExporter type="xml" target="tbl" fileName="cars" />  
-        </h:commandLink>  
-    </p:panel>  
-      
-    <p:panel header="Export Page Data">  
-        <h:commandLink>  
-            <p:graphicImage value="/images/excel.png" />  
-            <p:dataExporter type="xls" target="tbl" fileName="cars" pageOnly="true"/>  
-        </h:commandLink>  
-  
-        <h:commandLink>  
-            <p:graphicImage value="/images/pdf.png" />  
-            <p:dataExporter type="pdf" target="tbl" fileName="cars" pageOnly="true"/>  
-        </h:commandLink>  
-          
-        <h:commandLink>  
-            <p:graphicImage value="/images/csv.png" />  
-            <p:dataExporter type="csv" target="tbl" fileName="cars" pageOnly="true"/>  
-        </h:commandLink>  
-          
-        <h:commandLink>  
-            <p:graphicImage value="/images/xml.png" />  
-            <p:dataExporter type="xml" target="tbl" fileName="cars" pageOnly="true"/>  
-        </h:commandLink>  
-    </p:panel>  
-</h:panelGrid>  
-
 </h:form>
 </f:view>
 

@@ -23,6 +23,7 @@ public class Logging implements Serializable {
 	private String priority;
 	private String facility;
 	private String host;
+	private String program;
 	private static final long serialVersionUID = 1L;
 
 	public Logging() {
@@ -84,6 +85,12 @@ public class Logging implements Serializable {
 
 	public void setHost(String host) {
 		this.host = host;
+	}
+	public String getProgram() {
+		return program;
+	}
+	public void setProgram(String program) {
+		this.program = program;
 	}
    
 }
