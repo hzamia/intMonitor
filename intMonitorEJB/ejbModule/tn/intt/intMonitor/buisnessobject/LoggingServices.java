@@ -7,33 +7,33 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import tn.intt.intMonitor.entities.Logs;
+import tn.intt.intMonitor.entities.Logging;
 
 /**
- * Session Bean implementation class LogsServices
+ * Session Bean implementation class LoggingServices
  */
 @Stateless
 @LocalBean
-public class LogsServices implements LogsServicesRemote {
+public class LoggingServices implements LoggingServicesRemote {
 
+	
 	@PersistenceContext
 	private EntityManager entityManager;
-	
     /**
      * Default constructor. 
      */
-    public LogsServices() {
+    public LoggingServices() {
         // TODO Auto-generated constructor stub
     }
 
 	@Override
-	public Logs findLogs(int seq) {
+	public Logging findLogs(int seq) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Logs> getAllLogs() {
+	public List<Logging> getAllLogs() {
 		String jpql="SELECT l FROM logs l"; 
 		return entityManager.createQuery(jpql).getResultList();
 	}

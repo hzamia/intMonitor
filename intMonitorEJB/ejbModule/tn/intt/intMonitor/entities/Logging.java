@@ -7,18 +7,16 @@ import java.util.Date;
 import javax.persistence.*;
 
 /**
- * Entity implementation class for Entity: logs
+ * Entity implementation class for Entity: Logging
  *
  */
 @Entity
 @Table(name="logs")
-public class Logs implements Serializable {
+public class Logging implements Serializable {
 
-	   
 	
 	private int seq;
 	private String msg;
-	private String program;
 	private String tag;
 	private String level;
 	private Date datetime;
@@ -27,10 +25,9 @@ public class Logs implements Serializable {
 	private String host;
 	private static final long serialVersionUID = 1L;
 
-	public Logs() {
+	public Logging() {
 		super();
 	}   
-	
 	@Id
 	public int getSeq() {
 		return this.seq;
@@ -46,13 +43,6 @@ public class Logs implements Serializable {
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}   
-	public String getProgram() {
-		return this.program;
-	}
-
-	public void setProgram(String program) {
-		this.program = program;
-	}   
 	public String getTag() {
 		return this.tag;
 	}
@@ -66,6 +56,13 @@ public class Logs implements Serializable {
 
 	public void setLevel(String level) {
 		this.level = level;
+	}   
+	public Date getDatetime() {
+		return this.datetime;
+	}
+
+	public void setDatetime(Date datetime) {
+		this.datetime = datetime;
 	}   
 	public String getPriority() {
 		return this.priority;
@@ -87,15 +84,6 @@ public class Logs implements Serializable {
 
 	public void setHost(String host) {
 		this.host = host;
-	}
-
-    @Temporal(TemporalType.TIMESTAMP)
-	public Date getDatetime() {
-		return datetime;
-	}
-
-	public void setDatetime(Date datetime) {
-		this.datetime = datetime;
 	}
    
 }
