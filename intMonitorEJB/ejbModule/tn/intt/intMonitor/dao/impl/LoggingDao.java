@@ -6,6 +6,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import tn.intt.intMonitor.dao.inter.LoggingDaoRemote;
 import tn.intt.intMonitor.entities.Logging;
@@ -36,6 +37,28 @@ public class LoggingDao implements LoggingDaoRemote {
 	@Override
 	public List<Logging> getAllLogs() {
 		return entityManager.createQuery("from Logging").getResultList();
+	}
+
+	@Override
+	public List<Logging> getHostLog() {
+		String jpql="SELECT l FROM Logging l where l.host='root.intt.tn'";
+		return entityManager.createQuery(jpql).getResultList();
+	}
+
+	@Override
+	public Long getPriorityCount(String priority) {
+			
+		Query query = entityManager.createQuery("SELECT COUNT(l) FROM Logging l where l.priority= :priority");
+		query.setParameter("priority", priority);
+		return (Long)query.getSingleResult();
+
+	}
+
+	@Override
+	public Long getLogsCountByHost(String host) {
+		Query query = entityManager.createQuery("SELECT COUNT(l) FROM Logging l where l.host= :host");
+		query.setParameter("host", host);
+		return (Long)query.getSingleResult();
 	}
 
 }
