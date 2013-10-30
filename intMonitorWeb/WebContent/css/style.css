@@ -145,3 +145,27 @@ p
 {
 	color: #0F93DF;
 }
+
+h2
+{color: #0F93DF;}
+
+.myDiv {
+	max-width:374px;
+	position:relative;
+	top:10px;
+	left:10px;
+	
+}
+
+.mydonut
+{
+	position: absolute;
+	top:240px;
+	left:600px;
+}
+
+.mybackgroun
+{
+	background-color: green;
+}
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>Système de surveillance de l'INT
+
+<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/style.css" />
+		
+		
+		</h:head> 
+<body> 
+<p:layout style="min-width:400px;min-height:200px;" id="layout" fullPage="true">  
+
+	 <p:layoutUnit position="north" resizable="true" size="100" minSize="40" maxSize="200">  
+        TOP 
+         
+    </p:layoutUnit>
+    <p:layoutUnit position="west" resizable="true" size="150" minSize="40" maxSize="200">  
+       <div align="left" >
+        <h:form id="form" >
+				 <p:growl id="messages" showDetail="true" />
+							<p:tree id="treeSingle" value="#{treeCtrl.root}" var="node"
+								selectionMode="single" selection="#{treeCtrl.selectedNode}" >
+								<p:ajax event="select" update=":formCenter:panelGroupCenter" listener="#{treeCtrl.onNodeSelect}" />
+								
+								<p:treeNode expandedIcon="ui-icon-folder-open"
+									collapsedIcon="ui-icon-folder-collapsed">
+									<h:outputText value="#{node}" />
+								</p:treeNode>
+							</p:tree>
+								
+					</h:form></div>
+    </p:layoutUnit>  
+  
+    <p:layoutUnit position="center" id="center">  
+      <h:form id="formCenter" style="text-align: center" >
+                    <h:panelGroup id="panelGroupCenter">
+                                      </h:panelGroup>
+                                      <ui:include src="#{treeCtrl.page}.xhtml" /> 
+                </h:form>
+             
+</p:layoutUnit>
+</p:layout>  
+</body> 
+</html>

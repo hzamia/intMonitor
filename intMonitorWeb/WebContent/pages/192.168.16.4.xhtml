@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head><link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/style.css" />
+		
+		
+		 </h:head> 
+<body> 
+<f:view>
+<h:form>
+
+<p:dataTable id="tbl" var="logs" value="#{adCtrl.listLogsAd}" paginator="true"  rows="5" cellSeparator="false">  
+    	<p:column>  
+        <f:facet name="header">  
+            <h:outputText value="Host" />  
+        </f:facet>  
+        <h:outputText value="#{logs.host}" />  
+    	</p:column>  
+    	
+    	
+    	<p:column styleClass="myTableFlux" >
+  		 <f:facet name="header">  
+            <h:outputText value="Message" />  
+        </f:facet>  
+        <h:outputLink id="grow" value="#">  
+        <h:outputText value="#{logs.msg}" /> 
+        </h:outputLink>
+        </p:column> 
+  		
+      <p:column>  
+        <f:facet name="header">  
+            <h:outputText value="Priority" />  
+        </f:facet>  
+        <h:outputText value="#{logs.priority}" />  
+    </p:column>  
+  
+   
+  
+    
+</p:dataTable>  
+
+<div class="myDiv">
+<h2 align="center">Log du serveur Active Directory</h2>
+<p:panelGrid columns="2" cellpadding="10" >
+<h:outputText value="Nombre de Login avec success sur l'AD "  style="color:#00E664"/>
+<p:inputText value="#{logsCtrl.countLogOnAd}" readonly="true" size="2" ></p:inputText>
+<h:outputText value="Nombre de deconexion avec success sur l'AD" style="color:red"/>
+<p:inputText value="#{logsCtrl.countLogOffAd}" readonly="true" size="2"></p:inputText>
+<h:outputText value="Autre log sur l'AD " style="color:blue"/>
+<p:inputText value="#{logsCtrl.countOthersAd}" readonly="true" size="2" ></p:inputText>
+</p:panelGrid>
+</div>
+
+</h:form>
+</f:view>
+<div class="mydonut">
+<p:donutChart id="custom" value="#{treeCtrl.donutModel}"   
+            legendPosition="e" sliceMargin="5" showDataLabels="true" dataFormat="value" shadow="true"  
+            title="Repartition des logs par priority" style="width:500px;height:400px" />  
+            
+</div>
+        
+    
+             
+              
+</body>  
+</html>

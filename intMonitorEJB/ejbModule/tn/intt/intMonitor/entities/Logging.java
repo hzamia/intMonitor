@@ -24,6 +24,7 @@ public class Logging implements Serializable {
 	private String facility;
 	private String host;
 	private String program;
+	//private EquipRx equipRx;
 	private static final long serialVersionUID = 1L;
 
 	public Logging() {
@@ -92,5 +93,12 @@ public class Logging implements Serializable {
 	public void setProgram(String program) {
 		this.program = program;
 	}
-   
+	/*@ManyToOne
+	public EquipRx getEquipRx() {
+		return equipRx;
+	}
+	public void setEquipRx(EquipRx equipRx) {
+		this.equipRx = equipRx;
+	}
+   */
 }

@@ -6,11 +6,13 @@
 	xmlns:p="http://primefaces.org/ui">
       
 
-<h:head></h:head> 
+<h:head><link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/style.css" /></h:head> 
 <body> 
+
 <f:view>
 <h:form>
-<p:dataTable id="tbl" var="logs" value="#{logsCtrl.modelLogs}" paginator="true"  rows="15">  
+<p:dataTable id="tbl" var="logs" value="#{logsCtrl.modelLogs}" paginator="true"  rows="15" >  
     	<p:column>  
         <f:facet name="header">  
             <h:outputText value="Host" />  
@@ -18,6 +20,16 @@
         <h:outputText value="#{logs.host}" />  
     	</p:column>  
     	
+    	
+    	<p:column width="40px;" resizable="true" filterMaxLength="200">
+  		 <f:facet name="header">  
+            <h:outputText value="Message" />  
+        </f:facet>  
+        <h:outputLink id="grow" value="#">  
+        <h:outputText value="message" /> 
+        </h:outputLink>
+  		    <p:tooltip for="grow" value="#{logs.msg}" showEffect="fade" hideEffect="fade" />  
+        </p:column> 
   		
     <p:column>  
         <f:facet name="header">  
@@ -39,79 +51,14 @@
         </f:facet>  
         <h:outputText value="#{logs.datetime}" />  
     </p:column>  
+    <p:column>
     
-    <p:column >
-        <f:facet name="header">  
-            <h:outputText value="ProGram" />  
-        </f:facet>  
-        <h:outputText value="#{logs.program}" />  
     </p:column>
     
-    <p:column >
-  		 <f:facet name="header">  
-            <h:outputText value="Message" />  
-        </f:facet>  
-        <h:outputLink id="grow" value="#">  
-        <h:outputText value="message" /> 
-        </h:outputLink>
-  		    <p:tooltip for="grow" value="#{logs.msg}" showEffect="fade" hideEffect="fade" />  
-        </p:column> 
 </p:dataTable>  
+
 </h:form>
 
-
-<p:pieChart id="sample" value="#{logsCtrl.pieChartModel}" legendPosition="w"  
-                title="All Events Status" style="width:400px;height:300px" showDataLabels="true"  />  
-  
-
-
-
-<p:dataTable id="tbl1" var="host" value="#{logsCtrl.modelLogsHost}" paginator="true" rows="10">  
-    	<p:column>  
-        <f:facet name="header">  
-            <h:outputText value="Host" />  
-        </f:facet>  
-        <h:outputText value="#{host.host}" />  
-    	</p:column> 
-    	
-    	 
-  		<p:column  >
-  		<f:facet name="header">  
-            <h:outputText value="Message" />  
-        </f:facet>  
-        <h:outputText value="#{host.msg}" />  
-        </p:column> 
-    <p:column>  
-        <f:facet name="header">  
-            <h:outputText value="facility" />  
-        </f:facet>  
-        <h:outputText value="#{logs.facility}"/>  
-    </p:column>  
-  
-    <p:column>  
-        <f:facet name="header">  
-            <h:outputText value="Priority" />  
-        </f:facet>  
-        <h:outputText value="#{logs.priority}" />  
-    </p:column>  
-  
-    <p:column>  
-        <f:facet name="header">  
-            <h:outputText value="Date and Time" />  
-        </f:facet>  
-        <h:outputText value="#{logs.datetime}" />  
-    </p:column>  
-    
-    <p:column >
-        <f:facet name="header">  
-            <h:outputText value="ProGram" />  
-        </f:facet>  
-        <h:outputText value="#{logs.program}" />  
-    </p:column> 
-    
-    
-    
-</p:dataTable>  
 
 </f:view>
 

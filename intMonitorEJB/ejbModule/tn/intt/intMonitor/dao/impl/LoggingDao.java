@@ -55,10 +55,51 @@ public class LoggingDao implements LoggingDaoRemote {
 	}
 
 	@Override
-	public Long getLogsCountByHost(String host) {
-		Query query = entityManager.createQuery("SELECT COUNT(l) FROM Logging l where l.host= :host");
+	public List<Logging> getLogsByHost(String host) {
+		Query query = entityManager.createQuery("SELECT l FROM Logging l where l.host= :host");
 		query.setParameter("host", host);
-		return (Long)query.getSingleResult();
+		return query.getResultList();
 	}
 
+	@Override
+	public List<Logging> getlistHosts() {
+		String jpql = "SELECT l FROM Logging l GROUP BY l.host";
+		return entityManager.createQuery(jpql).getResultList();
+	}
+
+	@Override
+	public List<Logging> getLogsSuccessLoginAd() {
+		Query jpql= entityManager.createQuery("SELECT l FROM Logging l where l.msg LIKE :param");
+		jpql.setParameter("param", "%root.intt.tn	Ouvrir la session%");
+		return jpql.getResultList();
+	}
+
+	@Override
+	public List<Logging> getLogsLogOffAd() {
+		Query jpql=entityManager.createQuery("SELECT l FROM Logging l where l.msg LIKE :param ");
+		jpql.setParameter("param", "%root.intt.tn	Fermer la session%");
+		return jpql.getResultList();
+	}
+
+	@Override
+	public List<Logging> getlogsOthersAd() {
+		Query jpql= entityManager.createQuery("SELECT l FROM Logging l where l.host='root.intt.tn' and l.msg not LIKE :param and l.msg not LIKE :param2 ");
+		jpql.setParameter("param", "%root.intt.tn	Ouvrir la session%");
+		jpql.setParameter("param2", "%root.intt.tn	Fermer la session%");
+		return jpql.getResultList();
+		
+	}
+
+	@Override
+	public List<Logging> getPriorityByHost(String priority, String host) {
+		Query query = entityManager.createQuery("SELECT l FROM Logging l where l.host= :host and l.priority= :priority");
+		query.setParameter("priority", priority);
+		query.setParameter("host", host);
+		return query.getResultList();
+	}
+	
+	
+	
+	
+	
 }

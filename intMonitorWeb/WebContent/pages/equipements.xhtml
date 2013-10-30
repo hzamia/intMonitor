@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+      
+
+	<h:head><link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/style.css" /></h:head> 
+<body> 
+ <p:tabView> activeIndex="2">  
+	<p:tab title="Add Equipement">  
+		<f:view>
+			<h:form id="addEquipement"  >
+			<p:panelGrid columns="2" border-color="blue">
+				
+				<h:outputText value="Name "></h:outputText> 
+            	<p:inputText  value="#{equipementCtrl.equipement.name}" id="name"/>  
+				<h:outputText value="Addresse IP"></h:outputText>
+				<p:inputText value="#{equipementCtrl.equipement.ip}" id="ip" />
+				<h:outputText value="Type de l'equipement" />
+				<p:selectOneMenu value="#{equipementCtrl.equipement.type}" >
+				<f:selectItem itemValue="serveur" itemLabel="serveur"/>
+				<f:selectItem itemValue="switch" itemLabel="switch"/>
+				</p:selectOneMenu> 
+				
+					
+			</p:panelGrid>
+			
+			<h:commandButton value="equipement Add"  action="#{equipementCtrl.doAddEquipement()}" image="/css/add.png" update="addEquipement" />
+			<h:commandButton value="Reset" image="/css/undo.png" type="reset" />
+			
+		</h:form>
+		</f:view>
+		</p:tab>
+		<p:tab title="List Equipements">
+		 <h:form >  
+  
+  
+  
+    <p:dataTable id="dataTable" var="equip" value="#{equipementCtrl.modelEquipement}">  
+        <f:facet name="header">  
+			List Equipements
+        </f:facet>  
+  
+        <p:column sortBy="ip" headerText="IP Address">  
+            <h:outputText value="#{equip.ip}" />  
+        </p:column>  
+  
+        <p:column sortBy="name" headerText="Name">  
+            <h:outputText value="#{equip.name}" />  
+        </p:column>  
+  
+        <p:column sortBy="type" headerText="Type">  
+            <h:outputText  value="#{equip.type}" />  
+        </p:column>  
+  
+          <p:column sortBy="ActionDelete" headerText="Action Delete" width="20" >
+			<p:commandButton value="Delete"  action="#{equipementCtrl.doDeleteUser()}" update="dataTable"></p:commandButton>
+        </p:column> 
+    </p:dataTable>  
+  
+</h:form>  
+		</p:tab>
+</p:tabView>
+
+<div class="mydonut"></div>
+</body> 
+
+</html>

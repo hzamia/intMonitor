@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      
+      xmlns:p="http://primefaces.org/ui">
+ 
+    <h:head>
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/style.css" />
+    </h:head>
+ 
+    <h:body>
+ 
+ 	<p:layout fullPage="true">
+ 		<div  id="page"  >
+ 	
+ 	<p:layoutUnit position="north" size="120">
+ 
+	    <div id="header">
+		<ui:insert name="header" >
+		<header>
+		<IMG  src="#{request.contextPath}/css/intt.png" />
+		<h1 align="right"><p>Système de surveillance de l'INT</p></h1>
+		</header>		</ui:insert>
+	    </div>
+ 	</p:layoutUnit>
+ 
+ 	<p:layoutUnit position="center">
+	    <div id="content">
+	  	<ui:insert name="content" >
+	  				<h:form id="formcenter">
+	  				<ui:include src="#{treeCtrl.page}.xhtml" />
+                    </h:form>
+ 		</ui:insert>
+	    </div>
+ 
+ 	</p:layoutUnit>
+ 	<p:layoutUnit position="west" header="Actions" >
+	    <div id="left">
+	    	<ui:insert name="left" >
+	    	<h:form>  
+    		<p:panelMenu style="width:200px" >  
+        <p:submenu label="Administration">  
+            <p:menuitem value="Utilisateur" icon="ui-icon-person" actionListener="#{treeCtrl.user}"  update=":formcenter" /> 
+            <p:menuitem value="equipement"   icon="ui-icon-calculator" actionListener="#{treeCtrl.equip}" update=":formcenter" />  
+        </p:submenu>  
+        <p:submenu label="Logging">  
+            <p:menuitem value="List All Logs" actionListener="#{treeCtrl.logs}"  ajax="false" icon="ui-icon-close"/>  
+            <p:menuitem value="192.168.16.4" actionListener="#{treeCtrl.activeDirectory}"  ajax="flase" icon="ui-icon-print"/>  
+            
+        </p:submenu>  
+        <p:separator />  
+        <p:submenu label="Surveillance" >  
+            
+                    <p:menuitem value="Server 1" url="http://www.primefaces.org" icon="ui-icon-home" />  
+                     
+         
+            <p:menuitem value="Mobile" icon="ui-icon-signal"/>  
+        </p:submenu>
+         
+    </p:panelMenu>  
+  
+</h:form>   
+	    	</ui:insert>
+    	    </div>
+ </p:layoutUnit>
+        </div>
+ 	</p:layout>
+    </h:body>
+</html>

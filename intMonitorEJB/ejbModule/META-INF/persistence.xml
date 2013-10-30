@@ -4,6 +4,8 @@
 	<jta-data-source>java:/intt</jta-data-source>
 	<class>tn.intt.intMonitor.entities.Users</class>
 	<class>tn.intt.intMonitor.entities.Logging</class>
+	<class>tn.intt.intMonitor.entities.Equipement</class>
+	<class>tn.intt.intMonitor.entities.EquipRx</class>
 	<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
